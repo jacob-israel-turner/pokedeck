@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Route, browserHistory, IndexRoute } from 'react-router'
+import { Router, Route, hashHistory, IndexRoute } from 'react-router'
 import update from 'react-addons-update'
 import { Provider } from 'react-redux'
 
@@ -38,7 +38,7 @@ const styles = {
 
 ReactDOM.render((
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router history={hashHistory}>
       <Route path='/' component={App}>
         <IndexRoute component={Home} />
         <Route path='pokemon/:id' component={Pokemon} />

@@ -68,4 +68,4 @@ const styles = {
   }
 }
 
-export default connect((state) => {pokemon: state.pokemon})(Pokemon)
+export default connect((state) => ({pokemon: state.pokemon}))(Pokemon)
