@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import { Link } from 'react-router'
 
 const PokemonPreview = (props) => {
-  console.log(props)
   return (
     <div style={styles.container}>
       <img style={styles.pic} src={props.pic} />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Route, browserHistory, IndexRoute } from 'react-router'
+import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import update from 'react-addons-update'
 
 import { Home, Header, Pokemon } from './components'
@@ -30,7 +30,7 @@ class App extends Component {
     }
   }
   editPokemon (index, changes) {
-    this.setState(update({pokemon: { [index]: { $set: changes}}}))
+    this.setState(update(this.state, {pokemon: { [index]: { $set: changes}}}))
   }
   passPropsToRoute(routes) {
     const props = {
@@ -60,7 +60,7 @@ const styles = {
 }
 
 ReactDOM.render((
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path='/' component={App}>
       <IndexRoute component={Home} />
       <Route path='pokemon/:id' component={Pokemon} />
