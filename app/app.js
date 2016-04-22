@@ -40,7 +40,6 @@ class App extends Component {
     return routes && React.cloneElement(routes, props)
   }
   render() {
-  try{
    return (
     <div>
       <Header />
@@ -49,7 +48,6 @@ class App extends Component {
       </div>
     </div>
     )
-  } catch (e) {console.error(e)}
   }
 }
 
