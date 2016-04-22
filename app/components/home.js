@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import {PokemonPreview} from './index'
 
 const Home = props => (
@@ -14,4 +15,4 @@ const styles = {
   }
 }
 
-export default Home
+export default connect((state) => ({pokemon: state.pokemon}))(Home)

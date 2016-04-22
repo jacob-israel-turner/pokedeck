@@ -2,45 +2,22 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import update from 'react-addons-update'
+import { Provider } from 'react-redux'
 
 import { Home, Header, Pokemon } from './components'
+import store from './store'
 
 import './styles/main.css'
 
 class App extends Component {
   constructor() {
     super()
-    this.state = {
-      pokemon: [{
-        nickname: 'Nick',
-        gender: 'Male',
-        species: 'Pikachu',
-        pic: 'http://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png'
-      }, {
-        nickname: 'Billy',
-        gender: 'Male',
-        species: 'Diglett',
-        pic: 'http://assets.pokemon.com/assets/cms2/img/pokedex/full/050.png'
-      }, {
-        nickname: 'Francis',
-        gender: 'Female',
-        species: 'Venusaur',
-        pic: 'http://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png'
-      }]
-    }
-  }
-  editPokemon (index, changes) {
-    this.setState(update({pokemon: { [index]: { $set: changes}}}))
+    this.state = {}
   }
   passPropsToRoute(routes) {
-    const props = {
-      pokemon: this.state.pokemon,
-      editPokemon: this.editPokemon
-    }
-    return routes && React.cloneElement(routes, props)
+    return routes
   }
   render() {
-  try{
    return (
     <div>
       <Header />
@@ -49,7 +26,6 @@ class App extends Component {
       </div>
     </div>
     )
-  } catch (e) {console.error(e)}
   }
 }
 
@@ -59,12 +35,15 @@ const styles = {
   }
 }
 
+
 ReactDOM.render((
-  <Router history={browserHistory}>
-    <Route path='/' component={App}>
-      <IndexRoute component={Home} />
-      <Route path='pokemon/:id' component={Pokemon} />
-    </Route>
-  </Router>
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path='/' component={App}>
+        <IndexRoute component={Home} />
+        <Route path='pokemon/:id' component={Pokemon} />
+      </Route>
+    </Router>
+  </Provider>
 )
 , document.getElementById('app'))

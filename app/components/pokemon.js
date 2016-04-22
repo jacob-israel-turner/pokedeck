@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import {connect} from 'react-redux'
+
 class Pokemon extends Component {
   constructor() {
     super()
@@ -66,4 +68,4 @@ const styles = {
   }
 }
 
-export default Pokemon
+export default connect((state) => {pokemon: state.pokemon})(Pokemon)
