@@ -25,8 +25,7 @@ const initialState = {
 function reducer (state = initialState, action){
   switch (action.type) {
     case 'UPDATE' :
-      return update(state, {pokemon: { [action.index]: { $set: action.changes}}})
-
+      return update(state, {pokemon: { [action.id]: { $set: action.changes}}})
     default :
       return state
   }

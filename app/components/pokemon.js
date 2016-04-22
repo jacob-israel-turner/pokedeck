@@ -7,8 +7,20 @@ class Pokemon extends Component {
     super()
     this.state = {}
   }
-  toggleEdit() {
-    const pokemon = this.props.pokemon[this.props.params.id]
+  toggleEdit(e) {
+    e.preventDefault()
+    const wasEditing = this.state.isEditing
+    let pokemon
+    if (wasEditing) {
+      this.props.dispatch({
+        type: 'UPDATE',
+        id: this.props.params.id,
+        changes: {nickname: this.state.nickname, species: this.state.species, gender: this.state.gender, pic: this.state.pic}
+      })
+      pokemon = {}
+    } else {
+      pokemon = this.props.pokemon[this.props.params.id]
+    }
     this.setState({ isEditing: !this.state.isEditing, ...pokemon })
   }
   handleChange(field, e) {
