@@ -35,7 +35,7 @@ class App extends Component {
   passPropsToRoute(routes) {
     const props = {
       pokemon: this.state.pokemon,
-      editPokemon: this.editPokemon
+      editPokemon: this.editPokemon.bind(this)
     }
     return routes && React.cloneElement(routes, props)
   }

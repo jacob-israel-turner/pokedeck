@@ -6,7 +6,8 @@
   "scripts": {
     "webpack": "webpack --watch",
     "start": "node server.js",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "postinstall": "webpack"
   },
   "author": "",
   "license": "ISC",
